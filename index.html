@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,41 +11,175 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #fff5f7; margin: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
-        
-        @keyframes pulse-logo { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
-        @keyframes zoom-portal { 0% { transform: scale(1); opacity: 1; filter: blur(0px); } 100% { transform: scale(25); opacity: 0; filter: blur(20px); } }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        @keyframes jelly { 0% { transform: scale(1, 1); } 30% { transform: scale(1.1, 0.9); } 100% { transform: scale(1, 1); } }
-        @keyframes popIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse-attention { 0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(236, 72, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); } }
-        
-        .animate-pulse-logo { animation: pulse-logo 1.2s ease-in-out infinite; }
-        .animate-zoom-portal { animation: zoom-portal 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-jelly:active { animation: jelly 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .animate-pop { animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .animate-fade-up { animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
-        .animate-pulse-attention { animation: pulse-attention 2s infinite; }
-        
-        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.4); }
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #fff1f2; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #fb7185; border-radius: 20px; }
-        
-        .product-card-img { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .group:hover .product-card-img { transform: scale(1.15) rotate(2deg); }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff5f7;
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @keyframes pulse-logo {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes zoom-portal {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0px);
+            }
+
+            100% {
+                transform: scale(25);
+                opacity: 0;
+                filter: blur(20px);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes jelly {
+            0% {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.1, 0.9);
+            }
+
+            100% {
+                transform: scale(1, 1);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-attention {
+            0% {
+                box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(236, 72, 153, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+            }
+        }
+
+        .animate-pulse-logo {
+            animation: pulse-logo 1.2s ease-in-out infinite;
+        }
+
+        .animate-zoom-portal {
+            animation: zoom-portal 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-jelly:active {
+            animation: jelly 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-pop {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        .animate-pulse-attention {
+            animation: pulse-attention 2s infinite;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fff1f2;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #fb7185;
+            border-radius: 20px;
+        }
+
+        .product-card-img {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .group:hover .product-card-img {
+            transform: scale(1.15) rotate(2deg);
+        }
     </style>
 </head>
+
 <body>
     <div id="root"></div>
-
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, collection, doc, addDoc, updateDoc, deleteDoc, onSnapshot, setDoc, query, orderBy, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        
         const firebaseConfig = {
             apiKey: "AIzaSyC4kNnBH0_3zpub9ZRyv7yyRIOpN6GhtE4",
             authDomain: "heladeria-paola.firebaseapp.com",
@@ -54,7 +189,6 @@
             appId: "1:791268520785:web:22bb0bc99a61f426825970",
             measurementId: "G-3C20H0BDGT"
         };
-        
         const app = initializeApp(firebaseConfig);
         window.fb = {
             auth: getAuth(app), db: getFirestore(app), signInAnonymously, onAuthStateChanged, signInWithCustomToken,
@@ -62,7 +196,6 @@
         };
         window.dispatchEvent(new Event('firebase-ready'));
     </script>
-
     <script type="text/babel">
         const { useState, useEffect, useRef, useMemo } = React;
         const LOGO_URL = "http://lemustech.net/paola/Logo%20Sal%C3%B3n%20de%20Fiestas%20Infantil%20Colorido%20Morado%20%281%29.png";
@@ -77,21 +210,19 @@
             ShoppingCart: "M8 21h12a2 2 0 0 0 2-1.6l1-8.5a2 2 0 0 0-2-2.3H5.2 M2 3h2l.9 5 M16 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2 M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2",
             PieChart: "M21.21 15.89A10 10 0 1 1 8 2.83 M22 12A10 10 0 0 0 12 2v10z",
             IceCream2: "M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5C17.8 6.2 16 3 12 3S6.2 6.2 6 9.5c-2 1.6-3 3.5-3 5.5a7 7 0 0 0 7 7z",
-            ClipboardList: "M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2 M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z M12 11h4 M12 16h4 M8 11h.01 M8 16h.01",
-            TrendingDown: "m22 17-8.5-8.5-5 5L2 7", TrendingUp: "m22 7-8.5 8.5-5-5L2 17",
             History: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12",
             Settings: "M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
             Store: "m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7 M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8 M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4 M2 7h20 M2 7l1.5 6a2 2 0 0 0 2 1.5h13a2 2 0 0 0 2-1.5L22 7",
             X: "M18 6 6 18 M6 6l12 12", LockIcon: "M19 11H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2Z M7 11V7a5 5 0 0 1 10 0v4",
             Trash2: "M3 6h18 M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6 M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2",
-            Plus: "M5 12h14 M12 5v14", RotateCcw: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12 M3 3v9h9",
-            MinusCircle: "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z M8 12h8", ArrowLeft: "M19 12H5 M12 19l-7-7 7-7",
+            Plus: "M5 12h14 M12 5v14", ArrowLeft: "M19 12H5 M12 19l-7-7 7-7",
             Smartphone: "M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3H9z M12 18h.01",
-            Send: "M22 2 11 13 M22 2l-7 20-4-9-9-4 20-7z", DollarSign: "M12 1v22 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
-            Package: "m16.5 9.4-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM3.27 6.96 12 12.01l8.73-5.05M12 22.08V12",
+            Send: "M22 2 11 13 M22 2l-7 20-4-9-9-4 20-7z", MapPin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
+            TrendingUp: "m22 7-8.5 8.5-5-5L2 17", Package: "m16.5 9.4-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z",
             Menu: "M4 6h16 M4 12h16 M4 18h16"
         };
 
+        // --- COMPONENTES UI ---
         function LucideIcon({ name, size = 20, className = "" }) {
             return (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`lucide ${className}`}><path d={icons[name] || ""} /></svg>);
         }
@@ -114,22 +245,23 @@
             return (<footer className="py-6 text-center"><a href="https://www.instagram.com/lemustech.ve/" target="_blank" className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 hover:text-pink-500 transition-colors bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm border border-transparent hover:border-pink-100"><span>Website creada por</span><span className="font-bold">@Lemustech.ve</span></a></footer>);
         }
 
+        // --- PANTALLAS ---
         function LoginScreen({ onLogin, onCancel, error }) {
             const [p, setP] = useState('');
-            const tap = (n) => { if(p.length < 4) setP(v => v + n); };
+            const tap = (n) => { if (p.length < 4) setP(v => v + n); };
             return (
                 <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
                     <div className="bg-white w-full max-w-sm rounded-[3rem] p-10 shadow-2xl border-4 border-white mb-8 animate-pop">
-                        <div className="text-center mb-10"><div className="w-32 h-32 mx-auto mb-6 bg-pink-50 rounded-full p-4 border-4 border-white shadow-inner animate-float"><img src={LOGO_URL} className="w-full h-full object-contain filter drop-shadow-md" /></div><h2 className="text-3xl font-black text-gray-800 tracking-tighter leading-none uppercase">Acceso</h2></div>
-                        <div className="flex justify-center gap-4 mb-10">{[0,1,2,3].map(i => <div key={i} className={`w-4 h-4 rounded-full transition-all duration-500 ${p.length > i ? 'bg-pink-500 scale-125 shadow shadow-pink-500/50' : 'bg-gray-100'}`} />)}</div>
+                        <div className="text-center mb-10"><div className="w-32 h-32 mx-auto mb-6 bg-pink-50 rounded-full p-4 border-4 border-white shadow-inner animate-float"><img src={LOGO_URL} className="w-full h-full object-contain filter drop-shadow-md" /></div><h2 className="text-3xl font-black text-gray-800 tracking-tighter leading-none uppercase">Admin</h2></div>
+                        <div className="flex justify-center gap-4 mb-10">{[0, 1, 2, 3].map(i => <div key={i} className={`w-4 h-4 rounded-full transition-all duration-500 ${p.length > i ? 'bg-pink-500 scale-125 shadow shadow-pink-500/50' : 'bg-gray-100'}`} />)}</div>
                         {error && <p className="text-red-500 text-center mb-6 bg-red-50 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest animate-pulse border-2 border-red-100">{error}</p>}
                         <div className="grid grid-cols-3 gap-5 mb-8">
-                            {[1,2,3,4,5,6,7,8,9].map(n => <button key={n} onClick={()=>tap(n.toString())} className="h-16 rounded-[1.5rem] bg-gray-50/50 border-2 border-gray-50 hover:border-pink-200 text-2xl font-black text-gray-700 active:scale-90 transition-all">{n}</button>)}
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => <button key={n} onClick={() => tap(n.toString())} className="h-16 rounded-[1.5rem] bg-gray-50/50 border-2 border-gray-50 hover:border-pink-200 text-2xl font-black text-gray-700 active:scale-90 transition-all">{n}</button>)}
                             <button onClick={onCancel} className="h-16 text-gray-400 font-bold uppercase text-[10px] hover:text-gray-700 transition-colors leading-none">Cerrar</button>
-                            <button onClick={()=>tap('0')} className="h-16 rounded-[1.5rem] bg-gray-50/50 border-2 border-gray-50 hover:border-pink-200 text-2xl font-black text-gray-700 active:scale-90 transition-all">0</button>
-                            <button onClick={()=>setP(v => v.slice(0,-1))} className="h-16 text-gray-300 hover:text-pink-500 flex items-center justify-center transition-colors text-2xl"><LucideIcon name="ArrowLeft" size={24}/></button>
+                            <button onClick={() => tap('0')} className="h-16 rounded-[1.5rem] bg-gray-50/50 border-2 border-gray-50 hover:border-pink-200 text-2xl font-black text-gray-700 active:scale-90 transition-all">0</button>
+                            <button onClick={() => setP(v => v.slice(0, -1))} className="h-16 text-gray-300 hover:text-pink-500 flex items-center justify-center transition-colors text-2xl"><LucideIcon name="ArrowLeft" size={24} /></button>
                         </div>
-                        <Button onClick={()=>onLogin(p)} className="w-full py-5 text-lg rounded-[1.5rem] shadow-2xl font-black uppercase">Ingresar</Button>
+                        <Button onClick={() => onLogin(p)} className="w-full py-5 text-lg rounded-[1.5rem] shadow-2xl uppercase tracking-widest">Ingresar</Button>
                     </div>
                 </div>
             );
@@ -138,53 +270,52 @@
         function LandingPage({ products, settings, onSwitchToAdmin, onUpdateStock, onAddTx }) {
             const [cart, setCart] = useState([]);
             const [cust, setCust] = useState(() => localStorage.getItem('paola_cust') || '');
+            const [addr, setAddr] = useState(() => localStorage.getItem('paola_addr') || '');
             const [show, setShow] = useState(false);
-            const total = cart.reduce((a,b)=>a+(b.price*b.quantity), 0);
-            const sorted = [...products].sort((a,b)=>(b.stock>0)-(a.stock>0));
-            
+            const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
+            const sorted = [...products].sort((a, b) => (b.stock > 0) - (a.stock > 0));
+
             const addToCart = (p) => {
-                const ex = cart.find(x=>x.id===p.id); if(p.stock <= (ex?.quantity || 0)) return alert("¡Agotado!");
-                if(ex) setCart(cart.map(x=>x.id===p.id ? {...x, quantity:x.quantity+1} : x)); else setCart([...cart,{...p,quantity:1}]);
+                const ex = cart.find(x => x.id === p.id); if (p.stock <= (ex?.quantity || 0)) return alert("¡Sabor agotado!");
+                if (ex) setCart(cart.map(x => x.id === p.id ? { ...x, quantity: x.quantity + 1 } : x)); else setCart([...cart, { ...p, quantity: 1 }]);
             };
             const sendOrder = async () => {
-                if(!cust.trim()) return alert("Dinos tu nombre");
+                if (!cust.trim()) return alert("Dinos tu nombre");
+                if (!addr.trim()) return alert("Dinos tu dirección para el envío");
+
                 localStorage.setItem('paola_cust', cust);
-                for (const item of cart) { await onUpdateStock(item.id, -item.quantity); }
-                const desc = cart.map(x=>`${x.quantity}x ${x.name}`).join(', ');
-                await onAddTx({ type: 'sale', total, description: `${desc} (Cliente: ${cust})`, items: cart });
-                const itemsMsg = cart.map(x=>`🍦 ${x.quantity}x Tetas de ${x.name}`).join('%0A');
-                const msg = `👋 *Hola Paola! Pedido:*%0A%0A${itemsMsg}%0A%0A💰 *Total: $${total.toFixed(2)} (${formatBs(total).replace('$','')})*%0A👤 Cliente: ${cust}`;
-                let tel = settings.phone.replace(/\D/g,''); if(tel.startsWith('0')) tel = '58'+tel.substring(1);
-                window.open(`https://wa.me/${tel}?text=${msg}`,'_blank');
+                localStorage.setItem('paola_addr', addr);
+
+                const itemsMsg = cart.map(x => `🍦 ${x.quantity}x Tetas de ${x.name}`).join('%0A');
+                const msg = `👋 *Hola Paola! Nuevo Pedido:*%0A%0A${itemsMsg}%0A%0A💰 *Total: $${total.toFixed(2)} (${formatBs(total).replace('$', '')})*%0A👤 Cliente: ${cust}%0A📍 Dirección: ${addr}`;
+                let tel = settings.phone.replace(/\D/g, ''); if (tel.startsWith('0')) tel = '58' + tel.substring(1);
+
+                cart.forEach(item => onUpdateStock(item.id, -item.quantity));
+                onAddTx({ type: 'sale', total, description: `${cart.map(x => `${x.quantity}x ${x.name}`).join(', ')} (Cliente: ${cust}, Dirección: ${addr})`, items: cart });
+
+                window.location.href = `https://wa.me/${tel}?text=${msg}`;
                 setCart([]); setShow(false);
             };
+
             return (
                 <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 pb-32 flex flex-col font-sans text-left">
-                    <nav className="glass-panel sticky top-0 z-20 px-6 py-4 flex justify-between items-center shadow-lg"><div className="flex items-center gap-3"><div className="h-12 w-12 bg-white rounded-full p-1 shadow shadow-pink-100"><img src={LOGO_URL} className="w-full h-full object-contain" /></div><div><h1 className="text-xl font-black text-gray-900 tracking-tighter leading-none">Helados<span className="text-pink-500">Paola</span></h1><p className="text-[10px] font-bold text-gray-400 uppercase mt-1 leading-none">Cremosas & Únicas</p></div></div><button onClick={onSwitchToAdmin} className="p-3 text-gray-300 hover:text-pink-500 transition-all"><LucideIcon name="LockIcon"/></button></nav>
-                    <header className="relative mb-12 overflow-hidden shadow-2xl"><div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-rose-600 transform -skew-y-3 origin-top-left scale-110 h-[85%] z-0"></div><div className="relative z-10 p-12 pt-20 text-center text-white animate-float"><h2 className="text-5xl font-black mb-4 tracking-tighter text-shadow-lg leading-tight text-center uppercase">¡Momento Dulce! 🍦</h2><p className="text-pink-100 text-xl font-medium mb-10 max-w-sm mx-auto leading-relaxed text-center">Pide tus sabores favoritos y el stock se actualizará automáticamente.</p></div></header>
-                    <main className="max-w-7xl mx-auto px-6 flex-grow w-full"><div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">{sorted.map((p, i) => { const st = p.stock > 0; const inc = cart.find(x=>x.id===p.id); return (<div key={p.id} className={`bg-white rounded-[2.5rem] p-2 pb-6 border-2 transition-all duration-500 transform hover:-translate-y-2 animate-fade-up ${st?'border-white hover:border-pink-200 shadow-sm hover:shadow-2xl':'border-gray-100 bg-gray-50/50 opacity-80'}`} style={{animationDelay: `${i*100}ms`}}><div className="aspect-square bg-white rounded-[2rem] relative overflow-hidden group mb-4">{p.image ? <img src={p.image} className="w-full h-full object-contain product-card-img" /> : <span className="text-7xl flex h-full items-center justify-center">{p.emoji}</span>}<div className={`absolute top-4 right-4 text-[10px] font-black px-3 py-1.5 rounded-full shadow border border-white/40 backdrop-blur-md ${st?'bg-white/90 text-gray-800':'bg-red-500 text-white'}`}>{st?`${p.stock} disp.`:'AGOTADO'}</div></div><div className="px-4 text-left"><h4 className="font-black text-gray-800 text-lg mb-1 leading-tight">Tetas de {p.name}</h4><div className="flex justify-between items-baseline mb-5"><span className="text-2xl font-black text-pink-500">{formatMoney(p.price)}</span><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none">{formatBs(p.price).replace('$','')}</span></div>{st ? (inc ? <div className="flex justify-between items-center bg-pink-50 rounded-2xl p-1.5 border border-pink-100 shadow-inner"><button onClick={()=>setCart(cart.map(x=>x.id===p.id?{...x,quantity:Math.max(0,x.quantity-1)}:x).filter(x=>x.quantity>0))} className="w-10 h-10 bg-white rounded-2xl text-pink-600 font-black shadow-sm">-</button><span className="font-black text-gray-800 text-lg leading-none">{inc.quantity}</span><button onClick={()=>addToCart(p)} className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl text-white font-black shadow-md">+</button></div> : <Button onClick={()=>addToCart(p)} className="w-full py-4 rounded-[1.5rem] text-xs uppercase shadow-xl">Comprar</Button>) : <div className="w-full py-4 bg-gray-100 rounded-[1.5rem] text-[10px] font-black text-center text-gray-400 uppercase border-2 border-gray-50 leading-none tracking-widest">Agotado</div>}</div></div>); })}</div></main>
+                    <nav className="glass-panel sticky top-0 z-20 px-6 py-4 flex justify-between items-center shadow-lg"><div className="flex items-center gap-3"><div className="h-12 w-12 bg-white rounded-full p-1 shadow shadow-pink-100"><img src={LOGO_URL} className="w-full h-full object-contain" /></div><div><h1 className="text-xl font-black text-gray-900 tracking-tighter leading-none">Helados<span className="text-pink-500">Paola</span></h1><p className="text-[10px] font-bold text-gray-400 uppercase mt-1 leading-none tracking-widest">Cremosas & Únicas</p></div></div><button onClick={onSwitchToAdmin} className="p-3 text-gray-300 hover:text-pink-500 transition-all"><LucideIcon name="LockIcon" /></button></nav>
+                    <header className="relative mb-12 overflow-hidden shadow-2xl"><div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-rose-600 transform -skew-y-3 origin-top-left scale-110 h-[85%] z-0 shadow-lg"></div><div className="relative z-10 p-12 pt-20 text-center text-white animate-float"><h2 className="text-5xl font-black mb-4 tracking-tighter text-shadow-lg leading-tight text-center uppercase">¡Momento Dulce! 🍦</h2><p className="text-pink-100 text-xl font-medium mb-10 max-w-sm mx-auto leading-relaxed text-center">Pide tus helados y el stock se actualizará solo.</p></div></header>
+                    <main className="max-w-7xl mx-auto px-6 flex-grow w-full"><div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        {sorted.map((p, i) => { const st = p.stock > 0; const inc = cart.find(x => x.id === p.id); return (<div key={p.id} className={`bg-white rounded-[2.5rem] p-2 pb-6 border-2 transition-all duration-500 transform hover:-translate-y-2 animate-fade-up ${st ? 'border-white hover:border-pink-200 shadow-sm hover:shadow-2xl' : 'border-gray-100 bg-gray-50/50 opacity-80'}`} style={{ animationDelay: `${i * 100}ms` }}><div className="aspect-square bg-white rounded-[2rem] relative overflow-hidden group mb-4">{p.image ? <img src={p.image} className="w-full h-full object-contain product-card-img" /> : <span className="text-7xl flex h-full items-center justify-center">{p.emoji}</span>}<div className={`absolute top-4 right-4 text-[10px] font-black px-3 py-1.5 rounded-full shadow border border-white/40 backdrop-blur-md ${st ? 'bg-white/90 text-gray-800' : 'bg-red-500 text-white'}`}>{st ? `${p.stock} disp.` : 'AGOTADO'}</div></div><div className="px-4 text-left"><h4 className="font-black text-gray-800 text-lg mb-1 leading-tight">Tetas de {p.name}</h4><div className="flex justify-between items-baseline mb-5"><span className="text-2xl font-black text-pink-500">{formatMoney(p.price)}</span><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none">{formatBs(p.price).replace('$', '')}</span></div>{st ? (inc ? <div className="flex justify-between items-center bg-pink-50 rounded-2xl p-1.5 border border-pink-100 shadow-inner"><button onClick={() => setCart(cart.map(x => x.id === p.id ? { ...x, quantity: Math.max(0, x.quantity - 1) } : x).filter(x => x.quantity > 0))} className="w-10 h-10 bg-white rounded-2xl text-pink-600 font-black shadow-sm">-</button><span className="font-black text-gray-800 text-lg leading-none text-center flex items-center justify-center">{inc.quantity}</span><button onClick={() => addToCart(p)} className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl text-white font-black shadow-md">+</button></div> : <Button onClick={() => addToCart(p)} className="w-full py-4 rounded-[1.5rem] text-xs uppercase shadow-xl font-black">Comprar</Button>) : <div className="w-full py-4 bg-gray-100 rounded-[1.5rem] text-[10px] font-black text-center text-gray-400 uppercase border-2 border-gray-50 leading-none tracking-widest">Agotado</div>}</div></div>); })}
+                    </div></main>
                     <Footer />
-                    {cart.length > 0 && <div className="fixed bottom-6 left-6 right-6 z-50 flex justify-center text-left">{show ? (<div className="glass-panel rounded-[3rem] shadow-2xl p-8 w-full max-w-md animate-pop border-4 border-white text-left"><div className="flex justify-between items-center mb-8 border-b pb-6 font-black text-2xl text-gray-900 flex items-center gap-3 leading-none">Mi Carrito<button onClick={()=>setShow(false)} className="p-3 bg-gray-100 rounded-full text-gray-400"><LucideIcon name="X" size={20}/></button></div><div className="max-h-[35vh] overflow-y-auto space-y-4 mb-8 pr-2 custom-scrollbar text-left">{cart.map(i => (<div key={i.id} className="flex justify-between items-center bg-white p-4 rounded-[2rem] border-2 border-pink-50 shadow-sm"><div className="flex items-center gap-4"><div className="w-14 h-14 rounded-2xl bg-gray-50 overflow-hidden flex items-center justify-center">{i.image ? <img src={i.image} className="w-full h-full object-contain p-1"/> : i.emoji}</div><div><p className="font-black text-gray-800 text-sm leading-none mb-1">Tetas de {i.name}</p><p className="text-xs text-pink-500 font-black tracking-widest">{formatMoney(i.price)}</p></div></div><div className="flex gap-3 bg-gray-50 rounded-2xl p-1.5 border-2 border-white"><button onClick={()=>setCart(cart.map(x=>x.id===i.id?{...x,quantity:Math.max(0,x.quantity-1)}:x).filter(x=>x.quantity>0))} className="w-8 h-8 font-black text-gray-400 transition-colors hover:text-gray-900">-</button><span className="w-6 text-center font-black text-sm">{i.quantity}</span><button onClick={()=>addToCart(i)} className="w-8 h-8 font-black text-pink-500 transition-colors hover:text-pink-600">+</button></div></div>))}</div><div className="space-y-6"><div className="flex justify-between items-end bg-pink-50/50 p-6 rounded-[2rem] border-2 border-white shadow-inner text-left"><span className="text-gray-500 font-black uppercase text-[10px] tracking-widest mb-1.5 leading-none">Total</span><div className="text-right"><div className="text-4xl font-black text-gray-900 tracking-tighter leading-none">{formatMoney(total)}</div><div className="text-xs text-gray-400 font-bold tracking-widest mt-1 uppercase">{formatBs(total).replace('$','')}</div></div></div><div className="bg-white p-2 rounded-[2rem] border-4 border-pink-50 focus-within:border-pink-400 transition-all flex items-center px-5 shadow-sm text-left"><LucideIcon name="Smartphone" className="text-gray-300" size={22}/><input type="text" placeholder="Tu Nombre..." className="flex-1 p-3 bg-transparent text-lg font-black text-gray-700 outline-none placeholder-gray-300" value={cust} onChange={e=>setCust(e.target.value)} /></div><Button onClick={sendOrder} className="w-full py-5 rounded-[2rem] text-lg uppercase tracking-widest group bg-gradient-to-r from-green-500 to-emerald-600 animate-pulse-attention"><LucideIcon name="Send" size={22} className="group-hover:translate-x-2 transition-transform"/> Pedir por WhatsApp</Button></div></div>) : (<button onClick={()=>setShow(true)} className="w-full max-w-sm mx-auto bg-gray-900 text-white p-2.5 pr-3 pl-8 rounded-full shadow-2xl flex justify-between items-center hover:scale-105 transition-all border-4 border-white/20 backdrop-blur-xl animate-pulse-attention"><div className="flex flex-col text-left leading-none"><span className="text-[10px] text-gray-400 font-black uppercase tracking-widest mb-1">Mi Carrito</span><span className="font-black text-2xl tracking-tighter">{formatMoney(total)}</span></div><div className="bg-gradient-to-br from-pink-500 to-rose-600 px-8 py-4 rounded-full font-black text-sm uppercase shadow-xl flex items-center gap-3">Pedir <LucideIcon name="Send" size={16}/></div></button>)}</div>}
+                    {cart.length > 0 && <div className="fixed bottom-6 left-6 right-6 z-50 flex justify-center text-left">{show ? (<div className="glass-panel rounded-[3rem] shadow-2xl p-8 w-full max-w-md animate-pop border-4 border-white text-left"><div className="flex justify-between items-center mb-8 border-b pb-6 font-black text-2xl text-gray-900 flex items-center gap-3 leading-none">Mi Carrito<button onClick={() => setShow(false)} className="p-3 bg-gray-100 rounded-full text-gray-400"><LucideIcon name="X" size={20} /></button></div><div className="max-h-[25vh] overflow-y-auto space-y-4 mb-8 pr-2 custom-scrollbar text-left">{cart.map(i => (<div key={i.id} className="flex justify-between items-center bg-white p-4 rounded-[2rem] border-2 border-pink-50 shadow-sm"><div className="flex items-center gap-4"><div className="w-14 h-14 rounded-2xl bg-gray-50 overflow-hidden flex items-center justify-center">{i.image ? <img src={i.image} className="w-full h-full object-contain p-1" /> : i.emoji}</div><div><p className="font-black text-gray-800 text-sm leading-none mb-1 text-left">Tetas de {i.name}</p><p className="text-xs text-pink-500 font-black tracking-widest">{formatMoney(i.price)}</p></div></div><div className="flex gap-3 bg-gray-50 rounded-2xl p-1.5 border-2 border-white"><button onClick={() => setCart(cart.map(x => x.id === i.id ? { ...x, quantity: Math.max(0, x.quantity - 1) } : x).filter(x => x.quantity > 0))} className="w-8 h-8 font-black text-gray-400 transition-colors hover:text-gray-900">-</button><span className="w-6 text-center font-black text-sm flex items-center justify-center">{i.quantity}</span><button onClick={() => addToCart(i)} className="w-8 h-8 font-black text-pink-500 transition-colors hover:text-pink-600">+</button></div></div>))}</div><div className="space-y-4"><div className="flex justify-between items-end bg-pink-50/50 p-6 rounded-[2rem] border-2 border-white shadow-inner text-left"><span className="text-gray-500 font-black uppercase text-[10px] tracking-widest mb-1.5 leading-none">Total</span><div className="text-right"><div className="text-4xl font-black text-gray-900 tracking-tighter leading-none">{formatMoney(total)}</div><div className="text-xs text-gray-400 font-bold tracking-widest mt-1 uppercase leading-none">{formatBs(total).replace('$', '')}</div></div></div><div className="grid gap-3"><div className="bg-white p-2 rounded-[2rem] border-4 border-pink-50 focus-within:border-pink-400 transition-all flex items-center px-5 shadow-sm text-left"><LucideIcon name="Smartphone" className="text-gray-300 mr-2" size={18} /><input type="text" placeholder="Tu Nombre..." className="flex-1 py-3 bg-transparent text-lg font-black text-gray-700 outline-none placeholder-gray-300" value={cust} onChange={e => setCust(e.target.value)} /></div><div className="bg-white p-2 rounded-[2rem] border-4 border-pink-50 focus-within:border-pink-400 transition-all flex items-center px-5 shadow-sm text-left"><LucideIcon name="MapPin" className="text-gray-300 mr-2" size={18} /><input type="text" placeholder="Tu Dirección de Entrega..." className="flex-1 py-3 bg-transparent text-lg font-black text-gray-700 outline-none placeholder-gray-300" value={addr} onChange={e => setAddr(e.target.value)} /></div></div><Button onClick={sendOrder} className="w-full py-5 rounded-[2rem] text-lg uppercase tracking-widest group bg-gradient-to-r from-green-500 to-emerald-600 animate-pulse-attention font-black"><LucideIcon name="Send" size={22} className="group-hover:translate-x-2 transition-transform" /> Enviar Pedido</Button></div></div>) : (<button onClick={() => setShow(true)} className="w-full max-w-sm mx-auto bg-gray-900 text-white p-2.5 pr-3 pl-8 rounded-full shadow-2xl flex justify-between items-center hover:scale-105 transition-all border-4 border-white/20 backdrop-blur-xl animate-pulse-attention leading-none"><div className="flex flex-col text-left leading-none"><span className="text-[10px] text-gray-400 font-black uppercase tracking-widest mb-1 leading-none">Mi Carrito</span><span className="font-black text-2xl tracking-tighter leading-none">{formatMoney(total)}</span></div><div className="bg-gradient-to-br from-pink-500 to-rose-600 px-8 py-4 rounded-full font-black text-sm uppercase shadow-xl flex items-center gap-3">Pagar <LucideIcon name="Send" size={16} /></div></button>)}</div>}
                 </div>
             );
         }
 
+        // --- DASHBOARD ---
         function DashHome({ products, transactions }) {
             const todayTx = transactions.filter(t => new Date(t.date).toDateString() === new Date().toDateString());
             const sales = todayTx.reduce((acc, t) => acc + (t.type === 'sale' ? t.total : 0), 0);
             const lowStock = products.filter(p => p.stock < 5);
-            return (<div className="space-y-8 animate-fade-up text-left"><h2 className="text-3xl font-black text-gray-800 leading-none tracking-tighter uppercase">Resumen</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6"><Card className="bg-gradient-to-br from-green-400 to-emerald-600 text-white border-none shadow-xl"><div className="flex justify-between mb-4 opacity-80"><LucideIcon name="TrendingUp"/><span>Ventas Hoy</span></div><div className="text-4xl font-black leading-none">{formatMoney(sales)}</div><div className="text-sm opacity-90 mt-2">{formatBs(sales)}</div></Card><Card className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white border-none shadow-xl"><div className="flex justify-between mb-4 opacity-80"><LucideIcon name="Package"/><span>Bajo Stock</span></div><div className="text-4xl font-black leading-none">{lowStock.length}</div><div className="text-sm opacity-90 mt-2">Sabores</div></Card><Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-white border-none shadow-xl"><div className="flex justify-between mb-4 opacity-80"><LucideIcon name="History"/><span>Transacciones</span></div><div className="text-4xl font-black leading-none">{todayTx.length}</div><div className="text-sm opacity-90 mt-2">Hoy</div></Card></div></div>);
-        }
-
-        function DashPOS({ products, onTx, onStock }) {
-            const [cart, setCart] = useState([]);
-            const total = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
-            const addToCart = (p) => {
-                const ex = cart.find(i => i.id === p.id);
-                if(p.stock <= (ex?.quantity || 0)) return;
-                if(ex) setCart(cart.map(i => i.id === p.id ? {...i, quantity: i.quantity + 1} : i)); else setCart([...cart, {...p, quantity: 1}]);
-            };
-            return (<div className="flex flex-col lg:flex-row gap-8 h-full animate-fade-up text-left"><div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-4 overflow-y-auto custom-scrollbar">{products.map(p => (<button key={p.id} disabled={p.stock<=0} onClick={()=>addToCart(p)} className={`p-4 rounded-3xl border-2 flex flex-col justify-between h-40 transition-all ${p.stock>0?'bg-white border-transparent shadow-sm hover:border-pink-300':'bg-gray-100 opacity-60'}`}><div className="flex justify-between items-start"><span className="font-bold text-gray-700 text-sm leading-tight">{p.name}</span><span className="text-xs bg-pink-50 text-pink-600 px-2 rounded-full">{p.stock}</span></div><div className="text-3xl mx-auto">{p.emoji}</div><span className="font-black text-pink-500 leading-none">{formatMoney(p.price)}</span></button>))}</div><Card className="lg:w-96 flex flex-col shadow-2xl h-fit max-h-[80vh] text-left"><h3 className="font-bold text-xl mb-6 text-gray-900 leading-none uppercase tracking-tighter">Venta Directa</h3><div className="flex-1 overflow-y-auto space-y-2 mb-6 custom-scrollbar">{cart.map(i => <div key={i.id} className="flex justify-between text-sm p-3 bg-gray-50 rounded-xl"><span>{i.quantity}x {i.name}</span><span className="font-bold">{formatMoney(i.price*i.quantity)}</span></div>)}</div><div className="border-t border-dashed pt-4 mb-4"><div className="flex justify-between items-end text-right font-black"><span className="text-gray-500 font-normal">Total</span><div><p className="text-3xl text-gray-900 leading-none mb-1">{formatMoney(total)}</p><p className="text-xs text-gray-400">{formatBs(total)}</p></div></div></div><Button onClick={() => { if(cart.length===0) return; onTx({type:'sale',total,description:cart.map(i=>`${i.quantity}x ${i.name}`).join(', ')}); cart.forEach(i=>onStock(i.id,-i.quantity)); setCart([]); }} disabled={cart.length===0} className="w-full py-4 shadow-pink-200 uppercase font-black">Cobrar</Button></Card></div>);
+            return (<div className="space-y-8 animate-fade-up text-left"><h2 className="text-3xl font-black text-gray-800 leading-none tracking-tighter uppercase">Resumen</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6"><Card className="bg-gradient-to-br from-green-400 to-emerald-600 text-white border-none shadow-xl"><div className="flex justify-between mb-4 opacity-80"><LucideIcon name="TrendingUp" /><span>Ventas</span></div><div className="text-4xl font-black leading-none">{formatMoney(sales)}</div><div className="text-sm opacity-90 mt-2">{formatBs(sales)}</div></Card><Card className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white border-none shadow-xl"><div className="flex justify-between mb-4 opacity-80"><LucideIcon name="Package" /><span>Bajo Stock</span></div><div className="text-4xl font-black leading-none">{lowStock.length}</div><div className="text-sm opacity-90 mt-2">Productos</div></Card><Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-white border-none shadow-xl"><div className="flex justify-between mb-4 opacity-80"><LucideIcon name="History" /><span>Movimientos</span></div><div className="text-4xl font-black leading-none">{todayTx.length}</div><div className="text-sm opacity-90 mt-2">Hoy</div></Card></div></div>);
         }
 
         function DashProducts({ products, onAddProduct, onEditProduct, onDeleteProduct, onUpdateStock }) {
@@ -192,22 +323,22 @@
             const [form, setForm] = useState({ name: '', price: '', stock: '', emoji: '', image: '' });
             const [restock, setRestock] = useState({ id: null, qty: '' });
             const handleSave = async () => {
-                if(!form.name || !form.price) return;
+                if (!form.name || !form.price) return;
                 const data = { name: form.name, price: parseFloat(form.price), stock: parseInt(form.stock || 0), emoji: form.emoji || '🍦', image: form.image || '' };
                 if (form.id) await onEditProduct(form.id, data); else await onAddProduct(data);
                 setEdit(false); setForm({ name: '', price: '', stock: '', emoji: '', image: '' });
             };
             return (
                 <div className="space-y-6 animate-fade-up text-left">
-                    <div className="flex justify-between items-center"><h2 className="text-2xl font-bold text-gray-800 leading-none uppercase tracking-tighter">Inventario</h2><Button onClick={()=>{setForm({ name:'', price:'', stock:'', emoji:'', image:'' });setEdit(true)}} variant="success" className="text-xs uppercase"><LucideIcon name="Plus" size={14}/> Nuevo Helado</Button></div>
-                    {edit && <Card className="bg-white border-2 border-pink-100 animate-pop"><div className="grid grid-cols-2 gap-4 mb-6"><Input label="Sabor" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} /><Input label="Precio ($)" type="number" value={form.price} onChange={e=>setForm({...form,price:e.target.value})} /><Input label="Stock Inicial" type="number" value={form.stock} onChange={e=>setForm({...form,stock:e.target.value})} /><Input label="Emoji" value={form.emoji} onChange={e=>setForm({...form,emoji:e.target.value})} /><div className="col-span-2"><Input label="URL Foto" value={form.image} onChange={e=>setForm({...form,image:e.target.value})} /></div></div><div className="flex gap-2"><Button onClick={handleSave} className="flex-1 uppercase text-xs">Guardar</Button><Button onClick={()=>setEdit(false)} variant="secondary" className="flex-1 uppercase text-xs">Cerrar</Button></div></Card>}
+                    <div className="flex justify-between items-center"><h2 className="text-2xl font-bold text-gray-800 leading-none uppercase tracking-tighter">Inventario</h2><Button onClick={() => { setForm({ name: '', price: '', stock: '', emoji: '', image: '' }); setEdit(true) }} variant="success" className="text-xs uppercase"><LucideIcon name="Plus" size={14} /> Nuevo</Button></div>
+                    {edit && <Card className="bg-white border-2 border-pink-100 animate-pop"><div className="grid grid-cols-2 gap-4 mb-6"><Input label="Sabor" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /><Input label="Precio ($)" type="number" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} /><Input label="Stock Inicial" type="number" value={form.stock} onChange={e => setForm({ ...form, stock: e.target.value })} /><Input label="Emoji" value={form.emoji} onChange={e => setForm({ ...form, emoji: e.target.value })} /><div className="col-span-2"><Input label="URL Imagen" value={form.image} onChange={e => setForm({ ...form, image: e.target.value })} /></div></div><div className="flex gap-2"><Button onClick={handleSave} className="flex-1 uppercase text-xs font-black">Guardar</Button><Button onClick={() => setEdit(false)} variant="secondary" className="flex-1 uppercase text-xs font-black">Cerrar</Button></div></Card>}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">{products.map(p => (
                         <div key={p.id} className="bg-white p-4 rounded-3xl border flex flex-col gap-4 group transition-all hover:border-pink-200 shadow-sm text-left">
-                            <div className="flex items-center gap-3 text-left"><div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center overflow-hidden">{p.image ? <img src={p.image} className="w-full h-full object-contain"/> : p.emoji}</div><div className="flex-1"><p className="font-bold text-gray-800 leading-none mb-1">{p.name}</p><p className="text-xs font-bold text-pink-500">{p.stock} unid • {formatMoney(p.price)}</p></div></div>
+                            <div className="flex items-center gap-3 text-left"><div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center overflow-hidden">{p.image ? <img src={p.image} className="w-full h-full object-contain" /> : p.emoji}</div><div className="flex-1 text-left"><p className="font-bold text-gray-800 leading-none mb-1 text-left">{p.name}</p><p className="text-xs font-bold text-pink-500 text-left">{p.stock} unid • {formatMoney(p.price)}</p></div></div>
                             {restock.id === p.id ? (
-                                <div className="flex gap-2 animate-pop"><input type="number" className="flex-1 border-2 border-pink-100 rounded-xl px-2 py-1 outline-none text-sm font-bold" placeholder="+ Cant" value={restock.qty} onChange={e=>setRestock({...restock, qty:e.target.value})} autoFocus /><button onClick={()=>{if(!restock.qty)return; onUpdateStock(p.id, parseInt(restock.qty)); setRestock({id:null, qty:''});}} className="bg-emerald-500 text-white px-3 rounded-xl font-bold text-xs">OK</button><button onClick={()=>setRestock({id:null, qty:''})} className="bg-gray-100 px-2 rounded-xl text-gray-400">X</button></div>
+                                <div className="flex gap-2 animate-pop"><input type="number" className="flex-1 border-2 border-pink-100 rounded-xl px-2 py-1 outline-none text-sm font-bold" placeholder="+ Cant" value={restock.qty} onChange={e => setRestock({ ...restock, qty: e.target.value })} autoFocus /><button onClick={() => { if (!restock.qty) return; onUpdateStock(p.id, parseInt(restock.qty)); setRestock({ id: null, qty: '' }); }} className="bg-emerald-500 text-white px-3 rounded-xl font-bold text-xs">OK</button><button onClick={() => setRestock({ id: null, qty: '' })} className="bg-gray-100 px-2 rounded-xl text-gray-400">X</button></div>
                             ) : (
-                                <div className="flex gap-2"><button onClick={()=>setRestock({id:p.id, qty:''})} className="flex-1 py-2 bg-emerald-50 text-emerald-600 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-100 transition-colors">+ Stock</button><button onClick={()=>{setForm(p);setEdit(true)}} className="p-2 bg-blue-50 text-blue-500 rounded-xl hover:bg-blue-100"><LucideIcon name="Settings" size={16}/></button><button onClick={()=>onDeleteProduct(p.id)} className="p-2 text-red-500 bg-red-50 rounded-xl hover:bg-red-100 transition-colors"><LucideIcon name="Trash2" size={16}/></button></div>
+                                <div className="flex gap-2"><button onClick={() => setRestock({ id: p.id, qty: '' })} className="flex-1 py-2 bg-emerald-50 text-emerald-600 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-100 transition-colors">+ Stock</button><button onClick={() => { setForm(p); setEdit(true) }} className="p-2 bg-blue-50 text-blue-500 rounded-xl hover:bg-blue-100"><LucideIcon name="Settings" size={16} /></button><button onClick={() => onDeleteProduct(p.id)} className="p-2 text-red-500 bg-red-50 rounded-xl hover:bg-red-100 transition-colors text-shadow-none"><LucideIcon name="Trash2" size={16} /></button></div>
                             )}
                         </div>
                     ))}</div>
@@ -216,8 +347,8 @@
         }
 
         function DashFinance({ transactions, products, settings }) {
-            const income = transactions.filter(t=>t.type==='sale').reduce((a,b)=>a+b.total,0);
-            const expense = transactions.filter(t=>t.type==='expense').reduce((a,b)=>a+b.total,0);
+            const income = transactions.filter(t => t.type === 'sale').reduce((a, b) => a + b.total, 0);
+            const expense = transactions.filter(t => t.type === 'expense').reduce((a, b) => a + b.total, 0);
             const invVal = products.reduce((acc, p) => acc + (p.price * p.stock), 0);
             const bU = parseFloat(settings.baseUSD || 0);
             const bV = parseFloat(settings.baseVEF || 0);
@@ -227,10 +358,10 @@
                 <div className="space-y-8 animate-fade-up text-left">
                     <h2 className="text-3xl font-black text-gray-800 uppercase leading-none tracking-tighter">Finanzas</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <Card className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-none shadow-2xl p-8 text-left"><p className="opacity-70 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none">Efectivo Real ($)</p><p className="text-5xl font-black tracking-tighter leading-none">{formatMoney(tU)}</p></Card>
-                        <Card className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white border-none shadow-2xl p-8 text-left"><p className="opacity-70 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none">Efectivo Real (Bs)</p><p className="text-5xl font-black tracking-tighter leading-none">{formatBs(tV / EXCHANGE_RATE)}</p></Card>
-                        <Card className="border-pink-100 bg-white/50 text-left"><p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none">Capital en Inventario</p><p className="text-3xl font-black text-pink-600 leading-none">{formatMoney(invVal)}</p></Card>
-                        <Card className="border-gray-100 bg-white/50 text-left"><p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none">Saldo Inicial Base</p><p className="text-3xl font-black text-gray-800 leading-none">{formatMoney(bU)}</p></Card>
+                        <Card className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-none shadow-2xl p-8 text-left font-sans"><p className="opacity-70 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none">Caja Real ($)</p><p className="text-5xl font-black tracking-tighter leading-none">{formatMoney(tU)}</p></Card>
+                        <Card className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white border-none shadow-2xl p-8 text-left font-sans"><p className="opacity-70 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none">Caja Real (Bs)</p><p className="text-5xl font-black tracking-tighter leading-none">{formatBs(tV / EXCHANGE_RATE)}</p></Card>
+                        <Card className="border-pink-100 bg-white/50 text-left"><p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none text-left">Capital en Inventario</p><p className="text-3xl font-black text-pink-600 leading-none text-left">{formatMoney(invVal)}</p></Card>
+                        <Card className="border-gray-100 bg-white/50 text-left"><p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest mb-2 leading-none text-left">Saldo Inicial</p><p className="text-3xl font-black text-gray-800 leading-none text-left">{formatMoney(bU)}</p></Card>
                     </div>
                 </div>
             );
@@ -238,7 +369,7 @@
 
         function DashHistory({ transactions, onDeleteTx }) {
             return (
-                <div className="space-y-6 animate-fade-up text-left"><h2 className="text-2xl font-bold text-gray-800 leading-none uppercase tracking-tighter">Historial</h2><div className="bg-white rounded-3xl border overflow-hidden shadow-sm custom-scrollbar overflow-x-auto"><table className="w-full text-left min-w-[500px]"><thead className="bg-gray-50 border-b"><tr className="text-gray-400 uppercase text-[10px] font-black tracking-widest"><th className="p-5 text-left">Fecha</th><th className="p-5 text-left">Detalle</th><th className="p-5 text-right">Monto</th><th className="p-5"></th></tr></thead><tbody className="divide-y">{transactions.map(t => (<tr key={t.id} className="hover:bg-pink-50/20 transition-colors text-left"><td className="p-5 text-xs text-gray-400 text-left">{new Date(t.date).toLocaleDateString()}</td><td className="p-5 font-bold text-gray-700 text-sm leading-tight text-left">{t.description}</td><td className={`p-5 text-right font-black text-left ${t.type==='sale'?'text-green-500':'text-red-500'}`}>{formatMoney(t.total)}</td><td className="p-5 text-right"><button onClick={()=>onDeleteTx(t.id)} className="p-2 text-gray-200 hover:text-red-500 transition-colors"><LucideIcon name="Trash2" size={16}/></button></td></tr>))}</tbody></table></div></div>
+                <div className="space-y-6 animate-fade-up text-left"><h2 className="text-2xl font-bold text-gray-800 leading-none uppercase tracking-tighter">Historial</h2><div className="bg-white rounded-3xl border overflow-hidden shadow-sm custom-scrollbar overflow-x-auto text-left"><table className="w-full text-left min-w-[500px]"><thead className="bg-gray-50 border-b text-left"><tr className="text-gray-400 uppercase text-[10px] font-black tracking-widest text-left"><th className="p-5 text-left text-xs uppercase">Fecha</th><th className="p-5 text-left text-xs uppercase">Detalle</th><th className="p-5 text-right text-xs uppercase">Monto</th><th className="p-5"></th></tr></thead><tbody className="divide-y">{transactions.map(t => (<tr key={t.id} className="hover:bg-pink-50/20 transition-colors text-left"><td className="p-5 text-xs text-gray-400 text-left">{new Date(t.date).toLocaleDateString()}</td><td className="p-5 font-bold text-gray-700 text-sm leading-tight text-left">{t.description}</td><td className={`p-5 text-right font-black text-left ${t.type === 'sale' ? 'text-green-500' : 'text-red-500'}`}>{formatMoney(t.total)}</td><td className="p-5 text-right"><button onClick={() => onDeleteTx(t.id)} className="p-2 text-gray-200 hover:text-red-500 transition-colors"><LucideIcon name="Trash2" size={16} /></button></td></tr>))}</tbody></table></div></div>
             );
         }
 
@@ -247,12 +378,12 @@
             return (
                 <div className="max-w-xl mx-auto space-y-8 animate-fade-up text-left pb-10 font-sans">
                     <Card className="space-y-6 text-left">
-                        <h3 className="font-bold text-indigo-600 flex items-center gap-2 uppercase text-xs tracking-widest leading-none text-left">Capital Inicial Hoy</h3>
-                        <div className="grid grid-cols-2 gap-4 text-left"><Input label="Efectivo en $ (Base)" value={data.baseUSD} onChange={e=>setData({...data,baseUSD:e.target.value})} type="number" /><Input label="Efectivo en Bs (Base)" value={data.baseVEF} onChange={e=>setData({...data,baseVEF:e.target.value})} type="number" /></div>
-                        <h3 className="font-bold text-pink-500 flex items-center gap-2 border-t border-pink-50 pt-4 uppercase text-xs tracking-widest leading-none text-left">Datos Maestro</h3>
-                        <Input label="Banco" value={data.bank} onChange={e=>setData({...data, bank:e.target.value})} /><Input label="Cédula" value={data.cedula} onChange={e=>setData({...data, cedula:e.target.value})} /><Input label="WhatsApp" value={data.phone} onChange={e=>setData({...data, phone:e.target.value})} /><Input label="PIN Administrador" value={data.adminPin} onChange={e=>setData({...data, adminPin:e.target.value})} /><Button onClick={()=>onSave(data)} className="w-full py-4 text-lg font-black tracking-widest uppercase">Guardar Cambios</Button>
+                        <h3 className="font-bold text-indigo-600 flex items-center gap-2 uppercase text-xs tracking-widest leading-none text-left">Capital en mano hoy</h3>
+                        <div className="grid grid-cols-2 gap-4 text-left"><Input label="Dólares ($)" value={data.baseUSD} onChange={e => setData({ ...data, baseUSD: e.target.value })} type="number" /><Input label="Bolívares (Bs)" value={data.baseVEF} onChange={e => setData({ ...data, baseVEF: e.target.value })} type="number" /></div>
+                        <h3 className="font-bold text-pink-500 flex items-center gap-2 border-t border-pink-50 pt-4 uppercase text-xs tracking-widest leading-none text-left">Ajustes Maestro</h3>
+                        <Input label="Banco" value={data.bank} onChange={e => setData({ ...data, bank: e.target.value })} /><Input label="Cédula" value={data.cedula} onChange={e => setData({ ...data, cedula: e.target.value })} /><Input label="WhatsApp" value={data.phone} onChange={e => setData({ ...data, phone: e.target.value })} /><Input label="PIN Administrador" value={data.adminPin} onChange={e => setData({ ...data, adminPin: e.target.value })} /><Button onClick={() => onSave(data)} className="w-full py-4 text-lg font-black tracking-widest uppercase font-black">Actualizar Todo</Button>
                     </Card>
-                    <div className="p-6 border-4 border-red-50 bg-red-50/20 rounded-[2.5rem] text-center"><Button onClick={onReset} className="w-full bg-white text-red-500 border-2 border-red-100 hover:bg-red-500 hover:text-white font-black uppercase text-[10px] tracking-widest leading-none">Reiniciar Sistema</Button></div>
+                    <div className="p-6 border-4 border-red-50 bg-red-50/20 rounded-[2.5rem] text-center"><Button onClick={onReset} className="w-full bg-white text-red-500 border-2 border-red-100 hover:bg-red-500 hover:text-white font-black uppercase text-[10px] tracking-widest leading-none">Borrar Todo</Button></div>
                 </div>
             );
         }
@@ -262,9 +393,8 @@
             const [menu, setMenu] = useState(false);
             const renderView = () => {
                 const p = props;
-                switch(view) {
+                switch (view) {
                     case 'dashboard': return <DashHome products={p.products} transactions={p.transactions} />;
-                    case 'pos': return <DashPOS products={p.products} onTx={p.onAddTx} onStock={p.onUpdateStock} />;
                     case 'products': return <DashProducts products={p.products} onAddProduct={p.onAddProduct} onEditProduct={p.onEditProduct} onDeleteProduct={p.onDeleteProduct} onUpdateStock={p.onUpdateStock} />;
                     case 'finance': return <DashFinance transactions={p.transactions} products={p.products} settings={p.settings} />;
                     case 'history': return <DashHistory transactions={p.transactions} onDeleteTx={p.onDeleteTx} />;
@@ -272,17 +402,18 @@
                     default: return <DashHome products={p.products} transactions={p.transactions} />;
                 }
             };
-            const NavBtn = ({ id, icon, label }) => (<button onClick={()=>{setView(id); setMenu(false)}} className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl w-full transition-all duration-300 ${view===id ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/20' : 'text-gray-500 hover:bg-pink-50 hover:text-pink-600'}`}><LucideIcon name={icon} size={18} /><span className="font-bold text-sm leading-none">{label}</span></button>);
+            const NavBtn = ({ id, icon, label }) => (<button onClick={() => { setView(id); setMenu(false) }} className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl w-full transition-all duration-300 ${view === id ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/20' : 'text-gray-500 hover:bg-pink-50 hover:text-pink-600'}`}><LucideIcon name={icon} size={18} /><span className="font-bold text-sm leading-none">{label}</span></button>);
             return (
                 <div className="min-h-screen bg-gray-50 font-sans flex flex-col md:flex-row text-left">
-                    <aside className="hidden md:flex flex-col w-72 bg-white border-r h-screen sticky top-0 z-10 shadow-2xl"><div className="p-8 border-b border-gray-50"><div className="flex items-center gap-3 leading-none"><img src={LOGO_URL} className="w-12 h-12 object-contain filter drop-shadow-sm"/><span className="font-black text-xl tracking-tighter text-gray-800 uppercase leading-none">Panel<span className="text-pink-500">Pro</span></span></div></div><nav className="flex-1 p-6 space-y-1 overflow-y-auto custom-scrollbar"><NavBtn id="dashboard" icon="LayoutDashboard" label="Resumen" /><NavBtn id="pos" icon="ShoppingCart" label="Vender" /><NavBtn id="products" icon="IceCream2" label="Helados" /><NavBtn id="finance" icon="PieChart" label="Caja Real" /><NavBtn id="history" icon="History" label="Bitácora" /><NavBtn id="settings" icon="Settings" label="Ajustes" /><div className="pt-6 mt-6 border-t border-dashed border-gray-200"><button onClick={props.onSwitchToLanding} className="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-pink-600 transition-colors rounded-xl w-full text-sm font-bold leading-none uppercase tracking-widest"><LucideIcon name="Store" size={18}/> Salir</button></div></nav></aside>
-                    <div className="md:hidden bg-white/80 backdrop-blur-md p-4 flex justify-between items-center border-b sticky top-0 z-20"><img src={LOGO_URL} className="h-10 object-contain" /><button onClick={()=>setMenu(true)} className="p-2 bg-pink-50 text-pink-600 rounded-xl"><LucideIcon name="Menu"/></button></div>
-                    {menu && <div className="fixed inset-0 bg-white z-30 pt-20 px-6 space-y-2 md:hidden animate-in slide-in-from-right overflow-y-auto pb-10 font-sans"><button onClick={()=>setMenu(false)} className="absolute top-6 right-6 p-3 bg-gray-100 rounded-full text-gray-500"><LucideIcon name="X" size={24}/></button><NavBtn id="dashboard" icon="LayoutDashboard" label="Inicio" /><NavBtn id="pos" icon="ShoppingCart" label="Vender" /><NavBtn id="products" icon="IceCream2" label="Inventario" /><NavBtn id="finance" icon="PieChart" label="Finanzas" /><NavBtn id="history" icon="History" label="Historial" /><NavBtn id="settings" icon="Settings" label="Ajustes" /><button onClick={props.onSwitchToLanding} className="flex gap-3 px-4 py-5 text-gray-600 bg-gray-50 rounded-2xl w-full mt-10 font-black justify-center shadow-inner uppercase tracking-widest leading-none"><LucideIcon name="Store"/> Ver Tienda</button></div>}
+                    <aside className="hidden md:flex flex-col w-72 bg-white border-r h-screen sticky top-0 z-10 shadow-2xl text-left"><div className="p-8 border-b border-gray-50"><div className="flex items-center gap-3 leading-none"><img src={LOGO_URL} className="w-12 h-12 object-contain filter drop-shadow-sm" /><span className="font-black text-xl tracking-tighter text-gray-800 uppercase leading-none">Panel<span className="text-pink-500">Pro</span></span></div></div><nav className="flex-1 p-6 space-y-1 overflow-y-auto custom-scrollbar text-left"><NavBtn id="dashboard" icon="LayoutDashboard" label="Resumen" /><NavBtn id="products" icon="IceCream2" label="Inventario" /><NavBtn id="finance" icon="PieChart" label="Finanzas" /><NavBtn id="history" icon="History" label="Bitácora" /><NavBtn id="settings" icon="Settings" label="Ajustes" /><div className="pt-6 mt-6 border-t border-dashed border-gray-200"><button onClick={props.onSwitchToLanding} className="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-pink-600 transition-colors rounded-xl w-full text-sm font-bold leading-none uppercase tracking-widest"><LucideIcon name="Store" size={18} /> Salir</button></div></nav></aside>
+                    <div className="md:hidden bg-white/80 backdrop-blur-md p-4 flex justify-between items-center border-b sticky top-0 z-20"><img src={LOGO_URL} className="h-10 object-contain" /><button onClick={() => setMenu(true)} className="p-2 bg-pink-50 text-pink-600 rounded-xl"><LucideIcon name="Menu" /></button></div>
+                    {menu && <div className="fixed inset-0 bg-white z-30 pt-20 px-6 space-y-2 md:hidden animate-in slide-in-from-right overflow-y-auto pb-10 font-sans"><button onClick={() => setMenu(false)} className="absolute top-6 right-6 p-3 bg-gray-100 rounded-full text-gray-500"><LucideIcon name="X" size={24} /></button><NavBtn id="dashboard" icon="LayoutDashboard" label="Inicio" /><NavBtn id="products" icon="IceCream2" label="Inventario" /><NavBtn id="finance" icon="PieChart" label="Finanzas" /><NavBtn id="history" icon="History" label="Historial" /><NavBtn id="settings" icon="Settings" label="Ajustes" /><button onClick={props.onSwitchToLanding} className="flex gap-3 px-4 py-5 text-gray-600 bg-gray-50 rounded-2xl w-full mt-10 font-black justify-center shadow-inner uppercase tracking-widest leading-none"><LucideIcon name="Store" /> Ver Tienda</button></div>}
                     <main className="flex-1 p-6 md:p-12 overflow-y-auto bg-gray-50/50">{renderView()}</main>
                 </div>
             );
         }
 
+        // --- NÚCLEO APP ---
         function App() {
             const [user, setUser] = useState(null);
             const [isInitialLoading, setIsInitialLoading] = useState(true);
@@ -291,56 +422,55 @@
             const [showLogin, setShowLogin] = useState(false);
             const [loginErr, setLoginErr] = useState('');
             const [products, setProducts] = useState([]);
-            const [materials, setMaterials] = useState([]);
             const [transactions, setTransactions] = useState([]);
-            const [settings, setSettings] = useState({ bank:'', cedula:'', phone:'', adminPin:'0000', baseUSD:0, baseVEF:0 });
-            
+            const [settings, setSettings] = useState({ bank: '', cedula: '', phone: '', adminPin: '0000', baseUSD: 0, baseVEF: 0 });
+
             useEffect(() => {
                 const init = () => {
                     const fb = window.fb;
                     fb.onAuthStateChanged(fb.auth, u => {
                         setUser(u);
-                        if(u) {
-                            fb.onSnapshot(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products'), s => setProducts(s.docs.map(d => ({id:d.id, ...d.data()}))));
-                            fb.onSnapshot(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'materials'), s => setMaterials(s.docs.map(d => ({id:d.id, ...d.data()}))));
-                            fb.onSnapshot(fb.query(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'transactions'), fb.orderBy('date', 'desc')), s => setTransactions(s.docs.map(d => ({id:d.id, ...d.data()}))));
-                            fb.onSnapshot(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'settings', 'general'), s => { if(s.exists()) setSettings(s.data()); });
+                        if (u) {
+                            fb.onSnapshot(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products'), s => setProducts(s.docs.map(d => ({ id: d.id, ...d.data() }))));
+                            fb.onSnapshot(fb.query(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'transactions'), fb.orderBy('date', 'desc')), s => setTransactions(s.docs.map(d => ({ id: d.id, ...d.data() }))));
+                            fb.onSnapshot(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'settings', 'general'), s => { if (s.exists()) setSettings(s.data()); });
                             setTimeout(() => { setIsZooming(true); setTimeout(() => { setIsInitialLoading(false); }, 750); }, 1000);
                         }
                     });
                     fb.signInAnonymously(fb.auth).catch(console.error);
                 };
-                if(window.fb) init(); else window.addEventListener('firebase-ready', init);
+                if (window.fb) init(); else window.addEventListener('firebase-ready', init);
             }, []);
 
             const fbOps = {
-                onUpdateStock: async (id, d) => { 
+                onUpdateStock: async (id, d) => {
                     try {
-                        const fb = window.fb; 
-                        const p = products.find(x=>x.id===id); 
-                        if(p) await fb.updateDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products', id), { stock: Math.max(0, p.stock + d) }); 
-                    } catch(e) { console.error(e); }
+                        const fb = window.fb;
+                        const p = products.find(x => x.id === id);
+                        if (p) await fb.setDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products', id), { stock: Math.max(0, p.stock + d) }, { merge: true });
+                    } catch (e) { console.error(e); }
                 },
                 onAddProduct: async (d) => { const fb = window.fb; await fb.addDoc(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products'), d); },
-                onEditProduct: async (id, d) => { const fb = window.fb; await fb.updateDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products', id), d); },
-                onDeleteProduct: async (id) => { if(!id)return; const fb = window.fb; await fb.deleteDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products', id)); },
-                onAddTx: async (d) => { const fb = window.fb; await fb.addDoc(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'transactions'), {...d, date: new Date().toISOString(), timestamp: fb.serverTimestamp()}); },
-                onDeleteTx: async (id) => { if(!id)return; const fb = window.fb; await fb.deleteDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'transactions', id)); },
-                onSaveSettings: async (d) => { const fb = window.fb; await fb.setDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'settings', 'general'), d); alert("Caja Base Sincronizada"); },
+                onEditProduct: async (id, d) => { const fb = window.fb; await fb.setDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products', id), d, { merge: true }); },
+                onDeleteProduct: async (id) => { if (!id) return; const fb = window.fb; await fb.deleteDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products', id)); },
+                onAddTx: async (d) => { const fb = window.fb; await fb.addDoc(fb.collection(fb.db, 'artifacts', APP_ID, 'public', 'data', 'transactions'), { ...d, date: new Date().toISOString(), timestamp: fb.serverTimestamp() }); },
+                onDeleteTx: async (id) => { if (!id) return; const fb = window.fb; await fb.deleteDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'transactions', id)); },
+                onSaveSettings: async (d) => { const fb = window.fb; await fb.setDoc(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'settings', 'general'), d); alert("Sincronizado"); },
                 onResetDb: async () => {
                     const fb = window.fb; const batch = fb.writeBatch(fb.db);
                     products.forEach(p => batch.update(fb.doc(fb.db, 'artifacts', APP_ID, 'public', 'data', 'products', p.id), { stock: 0 }));
-                    await batch.commit(); alert("Sincronizado");
+                    await batch.commit();
                 }
             };
 
             if (isInitialLoading) return (<div className="min-h-screen bg-white flex items-center justify-center overflow-hidden"><div className={`transition-all duration-300 ${isZooming ? 'animate-zoom-portal' : 'animate-pulse-logo'}`}><img src={LOGO_URL} className="w-48 h-48 object-contain filter drop-shadow-2xl" /></div></div>);
-            if (showLogin) return <LoginScreen onLogin={(pin) => pin === settings.adminPin ? (setAppMode('admin'), setShowLogin(false), setLoginErr('')) : setLoginErr('MAESTRO, PIN INCORRECTO')} onCancel={()=>setShowLogin(false)} error={loginErr} />;
-            if (appMode === 'landing') return <LandingPage products={products} settings={settings} onSwitchToAdmin={()=>setShowLogin(true)} onUpdateStock={fbOps.onUpdateStock} onAddTx={fbOps.onAddTx} />;
-            return <AdminDashboard products={products} rawMaterials={materials} transactions={transactions} settings={settings} onSwitchToLanding={()=>setAppMode('landing')} {...fbOps} />;
+            if (showLogin) return <LoginScreen onLogin={(pin) => pin === settings.adminPin ? (setAppMode('admin'), setShowLogin(false), setLoginErr('')) : setLoginErr('MAESTRO, PIN INCORRECTO')} onCancel={() => setShowLogin(false)} error={loginErr} />;
+            if (appMode === 'landing') return <LandingPage products={products} settings={settings} onSwitchToAdmin={() => setShowLogin(true)} onUpdateStock={fbOps.onUpdateStock} onAddTx={fbOps.onAddTx} />;
+            return <AdminDashboard products={products} transactions={transactions} settings={settings} onSwitchToLanding={() => setAppMode('landing')} {...fbOps} />;
         }
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
+
 </html>
