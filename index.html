@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Tetas de Paola</title>
+    <title>Tetas Tradicionales - Pedidos</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -877,6 +877,7 @@
                 let totalUsd = 0;
                 let totalBs = 0;
 
+                // Descuento de Inventario
                 const updatePromises = this.data.cart.map(async (item) => {
                     const productRef = doc(db, COLLECTION_NAME, item.productId);
                     const product = this.data.products.find(p => p.id === item.productId);
@@ -885,7 +886,7 @@
                         await updateDoc(productRef, { stock: product.stock - item.qty });
                         totalUsd += (product.price * item.qty);
                         totalBs += (product.priceBs * item.qty);
-                        return { success: true };
+                        return { success: true, name: product.name };
                     } else {
                         return { success: false, name: product.name };
                     }
@@ -901,13 +902,19 @@
                         return;
                     }
 
-                    await addDoc(collection(db, FINANCES_COLLECTION), {
-                        type: 'sale',
-                        amountUsd: totalUsd,
-                        amountBs: totalBs,
-                        date: Date.now(),
-                        description: `Pedido de: ${name} (${paymentRef})`
-                    });
+                    // Se maneja el registro financiero en un try-catch independiente
+                    // para que no detenga el envío a WhatsApp si hay errores de permisos en Firebase.
+                    try {
+                        await addDoc(collection(db, FINANCES_COLLECTION), {
+                            type: 'sale',
+                            amountUsd: totalUsd,
+                            amountBs: totalBs,
+                            date: Date.now(),
+                            description: `Pedido de: ${name} (${paymentRef})`
+                        });
+                    } catch (financeError) {
+                        console.warn('Advertencia: El pedido no se registró en finanzas por permisos.', financeError);
+                    }
 
                     let message = `*🍦 NUEVO PEDIDO - TETAS TRADICIONALES 🍦*\n\n`;
                     message += `*Cliente:* ${name}\n`;
@@ -917,9 +924,11 @@
 
                     this.data.cart.forEach(item => {
                         const product = this.data.products.find(p => p.id === item.productId);
-                        const subtotalUsd = product.price * item.qty;
-                        const subtotalBs = product.priceBs * item.qty;
-                        message += `▪ ${item.qty}x ${product.name} ($${subtotalUsd.toFixed(2)} | ${subtotalBs} Bs)\n`;
+                        if (product) {
+                            const subtotalUsd = product.price * item.qty;
+                            const subtotalBs = product.priceBs * item.qty;
+                            message += `▪ ${item.qty}x ${product.name} ($${subtotalUsd.toFixed(2)} | ${subtotalBs} Bs)\n`;
+                        }
                     });
 
                     message += `*-----------------------------------*\n`;
@@ -936,7 +945,12 @@
 
                     const phone = "584129848382";
                     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-                    window.open(url, '_blank');
+
+                    // Asegurarse de que WhatsApp abra (Evita bloqueo de popups en safari/móviles al usar asincronía)
+                    const newWindow = window.open(url, '_blank');
+                    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                        window.location.href = url;
+                    }
 
                 } catch (error) {
                     console.error(error);
